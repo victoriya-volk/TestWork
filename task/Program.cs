@@ -4,20 +4,69 @@ string [] exampleThird = {"Russia", "Denmark", "Kazan"};
 
 void ChoiseFunctionProgramm ()
 {
-    Console.WriteLine("This programm choices elements whith smaller 4 signs length in array"
-    +"if you want watching demo, press key 'd', else if you create your array, press key 'm', "
-    +"if you want break this programm, please press any one other key");
+    Console.WriteLine("This program selects elements that are less then or equal to 3 characters long in the array"
+    +"if you want watching demo, press key 'd', else if you want create your array, press key 'm', "
+    +"if you want break this programm, please press key 'q'");
     string userChoise = Console.ReadLine();
-    Console.Write(userChoise);
+    if (userChoise == "d")
+    {
+        Console.WriteLine("First example:");
+        PrintArr(exampleFirst);
+        string [] resultFirst = ChoiceELemsInArr(exampleFirst);
+        PrintArr(resultFirst);
+        Console.WriteLine("Second example:");
+        PrintArr(exampleSecond);
+        string [] resultSecond = ChoiceELemsInArr(exampleSecond);
+        PrintArr(resultSecond);
+        Console.WriteLine("Third example:");
+        PrintArr(exampleThird);
+        string [] resultThird = ChoiceELemsInArr(exampleThird);
+        PrintArr(resultThird);
+        ChoiseFunctionProgramm();
+    }
+    else if (userChoise == "m")
+    {
+        string [] userArray = CreateUserArray();
+        Console.WriteLine("Your array:");
+        PrintArr(userArray);
+        Console.WriteLine("Result:");
+        PrintArr(ChoiceELemsInArr(userArray));
+        ChoiseFunctionProgramm();
+    }
+    else if (userChoise == "q")
+    {
+         Console.Clear();
+    }
+    else 
+    {
+        Console.WriteLine("That command does not exist");
+    }
+   
 }
 ChoiseFunctionProgramm();
+
+string [] CreateUserArray ()
+{
+    Console.WriteLine("Please, enter your array length:");
+    int userArrLength = Convert.ToInt32(Console.ReadLine());
+    string [] userArr = new string [userArrLength];
+    for (int i = 0; i < userArr.Length; i += 1)
+    {
+        Console.WriteLine($"Enter element number {i + 1}");
+        string newElem = Console.ReadLine();
+        userArr[i] = newElem;
+    }
+    return userArr;
+}
 
 void PrintArr (string [] arr)
 {
     Console.Write("[");
     for (int i = 0; i < arr.Length; i += 1)
     {
-        Console.Write($"{arr[i]}, ");
+        if (i < arr.Length - 1) Console.Write($"{arr[i]}, ");
+        else Console.Write($"{arr[i]}");
+        
     }
     Console.Write("]");
     Console.WriteLine();
@@ -61,12 +110,4 @@ string [] ChoiceELemsInArr (string [] oldArr)
         return newArr;
     }
 }
-PrintArr(exampleFirst);
-string [] resultFirst = ChoiceELemsInArr(exampleFirst);
-PrintArr(resultFirst);
-PrintArr(exampleSecond);
-string [] resultSecond = ChoiceELemsInArr(exampleSecond);
-PrintArr(resultSecond);
-PrintArr(exampleThird);
-string [] resultThird = ChoiceELemsInArr(exampleThird);
-PrintArr(resultThird);
+
