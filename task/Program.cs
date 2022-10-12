@@ -1,7 +1,8 @@
 ﻿string [] exampleFirst = {"hello", "2", "world", ":-)"};
 string [] exampleSecond = {"1234", "1567", "-2", "computer scince"};
 string [] exampleThird = {"Russia", "Denmark", "Kazan"};
-
+// Метод предлагающий пользователю выбрать 
+// запуск демо, ввод своего массива или выход из программы
 void ChoiseFunctionProgramm ()
 {
     Console.WriteLine("This program selects elements that are less then or equal to 3 characters long in the array"
@@ -43,8 +44,9 @@ void ChoiseFunctionProgramm ()
     }
    
 }
-ChoiseFunctionProgramm();
 
+// Метод для создания массива пользователем
+// Запрашивает количество элементов и каждый элемент по очереди
 string [] CreateUserArray ()
 {
     Console.WriteLine("Please, enter your array length:");
@@ -59,6 +61,7 @@ string [] CreateUserArray ()
     return userArr;
 }
 
+// Метод для вывода одномерного массива в консоль
 void PrintArr (string [] arr)
 {
     Console.Write("[");
@@ -72,6 +75,8 @@ void PrintArr (string [] arr)
     Console.WriteLine();
 }
 
+// Метод для проверки наличия эементов удовлетворяющих условию 
+// возвращает их количество
 int ChackingLengthForNewArr (string [] userArr)
 {
     int count = 0;
@@ -83,6 +88,7 @@ int ChackingLengthForNewArr (string [] userArr)
     return count;
 }
 
+// Метод создает новый массив и переносит подходящие элементы
 string [] ChoiceELemsInArr (string [] oldArr)
 {
     string [] newArr = new string [ChackingLengthForNewArr(oldArr)];
@@ -111,3 +117,4 @@ string [] ChoiceELemsInArr (string [] oldArr)
     }
 }
 
+ChoiseFunctionProgramm();
