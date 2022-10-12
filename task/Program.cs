@@ -1,6 +1,7 @@
 ﻿string [] exampleFirst = {"hello", "2", "world", ":-)"};
 string [] exampleSecond = {"1234", "1567", "-2", "computer scince"};
 string [] exampleThird = {"Russia", "Denmark", "Kazan"};
+
 // Метод предлагающий пользователю выбрать 
 // запуск демо, ввод своего массива или выход из программы
 void ChoiseFunctionProgramm ()
@@ -8,7 +9,9 @@ void ChoiseFunctionProgramm ()
     Console.WriteLine("This program selects elements that are less then or equal to 3 characters long in the array"
     +"if you want watching demo, press key 'd', else if you want create your array, press key 'm', "
     +"if you want break this programm, please press key 'q'");
-    string userChoise = Console.ReadLine();
+    string userChoise = Console.ReadLine()!;
+    // знак "!" используется, чтобы указать, что значение переменной никогда не будет равно null
+    // чтобы не было предупреждения
     if (userChoise == "d")
     {
         Console.WriteLine("First example:");
@@ -47,6 +50,7 @@ void ChoiseFunctionProgramm ()
 
 // Метод для создания массива пользователем
 // Запрашивает количество элементов и каждый элемент по очереди
+// Возвращает массив
 string [] CreateUserArray ()
 {
     Console.WriteLine("Please, enter your array length:");
@@ -55,7 +59,9 @@ string [] CreateUserArray ()
     for (int i = 0; i < userArr.Length; i += 1)
     {
         Console.WriteLine($"Enter element number {i + 1}");
-        string newElem = Console.ReadLine();
+        string newElem = Console.ReadLine()!;
+        // знак "!" используется, чтобы указать, что значение переменной никогда не будет равно null
+        // чтобы не было предупреждения
         userArr[i] = newElem;
     }
     return userArr;
@@ -89,6 +95,7 @@ int ChackingLengthForNewArr (string [] userArr)
 }
 
 // Метод создает новый массив и переносит подходящие элементы
+// Возвращает новый массив
 string [] ChoiceELemsInArr (string [] oldArr)
 {
     string [] newArr = new string [ChackingLengthForNewArr(oldArr)];
